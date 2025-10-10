@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Taxi Data Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Dashboard</h1>
+            <p class="subtitle">Urban Mobility Analysis Dashboard</p>
+        </header>
+
+        <!-- Statistics Overview -->
+        <section class="stats-overview" id="statsOverview">
+            <div class="stat-card">
+                <h3>Total Trips</h3>
+                <p class="stat-value" id="totalTrips">--</p>
+            </div>
+            <div class="stat-card">
+                <h3>Avg Distance</h3>
+                <p class="stat-value" id="avgDistance">-- miles</p>
+            </div>
+            <div class="stat-card">
+                <h3>Avg Speed</h3>
+                <p class="stat-value" id="avgSpeed">-- mph</p>
+            </div>
+            <div class="stat-card">
+                <h3>Avg Duration</h3>
+                <p class="stat-value" id="avgDuration">-- min</p>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="filters-section">
+            <h2>Filter Trips</h2>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="vendorFilter">Vendor</label>
+                    <select id="vendorFilter">
+                        <option value="">All Vendors</option>
+                        <option value="1">Vendor 1</option>
+                        <option value="2">Vendor 2</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="hourFilter">Hour of Day</label>
+                    <select id="hourFilter">
+                        <option value="">All Hours</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="dayFilter">Day of Week</label>
+                    <select id="dayFilter">
+                        <option value="">All Days</option>
+                        <option value="0">Monday</option>
+                        <option value="1">Tuesday</option>
+                        <option value="2">Wednesday</option>
+                        <option value="3">Thursday</option>
+                        <option value="4">Friday</option>
+                        <option value="5">Saturday</option>
+                        <option value="6">Sunday</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="weekendFilter">Weekend</label>
+                    <select id="weekendFilter">
+                        <option value="">All</option>
+                        <option value="true">Weekend</option>
+                        <option value="false">Weekday</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="minDistance">Min Distance (miles)</label>
+                    <input type="number" id="minDistance" step="0.1" placeholder="0">
+                </div>
+
+                <div class="filter-group">
+                    <label for="maxDistance">Max Distance (miles)</label>
+                    <input type="number" id="maxDistance" step="0.1" placeholder="100">
+                </div>
+
+                <div class="filter-group">
+                    <label for="minDuration">Min Duration (seconds)</label>
+                    <input type="number" id="minDuration" placeholder="0">
+                </div>
+
+                <div class="filter-group">
+                    <label for="maxDuration">Max Duration (seconds)</label>
+                    <input type="number" id="maxDuration" placeholder="10000">
+                </div>
+
+                <div class="filter-group">
+                    <label for="sortBy">Sort By</label>
+                    <select id="sortBy">
+                        <option value="pickup_datetime">Pickup Time</option>
+                        <option value="distance">Distance</option>
+                        <option value="duration">Duration</option>
+                        <option value="speed">Speed</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sortOrder">Order</label>
+                    <select id="sortOrder">
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-actions">
+                <button id="applyFilters" class="btn btn-primary">Apply Filters</button>
+                <button id="resetFilters" class="btn btn-secondary">Reset</button>
+            </div>
+        </section>
+
+       
+                <!-- Trips Table -->
+                <section class="trips-section">
+                    <div class="section-header">
+                        <h2>Trip Records</h2>
+                        <div class="pagination-info">
+                            <span id="paginationInfo">Showing 0 of 0 trips</span>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="trips-table">
+                            <thead>
+                                <tr>
+                                    <th>Trip ID</th>
+                                    <th>Vendor</th>
+                                    <th>Pickup Time</th>
+                                    <th>Duration (min)</th>
+                                    <th>Distance (mi)</th>
+                                    <th>Speed (mph)</th>
+                                    <th>Passengers</th>
+                                    <th>Time Period</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tripsTableBody">
+                                <tr>
+                                    <td colspan="8" class="loading">Loading trips...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+        
+                    <div class="pagination">
+                        <button id="prevPage" class="btn btn-secondary">Previous</button>
+                        <span id="pageInfo">Page 1</span>
+                        <button id="nextPage" class="btn btn-secondary">Next</button>
+                    </div>
+                </section>
+
+        <!-- Top Routes Section -->
+        <section class="top-routes-section">
+            <h2>Most Frequent Routes</h2>
+            <div class="routes-container" id="topRoutes">
+                <p class="loading">Loading routes...</p>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><b>KK-Team</b></p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading data...</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
