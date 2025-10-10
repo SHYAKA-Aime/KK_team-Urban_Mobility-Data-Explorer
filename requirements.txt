@@ -1,0 +1,7 @@
+mysql-connector-python==8.0.33
+
+# steps
+# python init_database.py
+# python backend/data_processor.py
+# python backend/server.py
+
