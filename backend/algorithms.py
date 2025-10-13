@@ -146,16 +146,6 @@ class OutlierDetector:
     
     @staticmethod
     def detect_outliers(data, multiplier=1.5):
-        """
-        Detect outliers using IQR method
-        
-        Args:
-            data: List of numerical values
-            multiplier: IQR multiplier (typically 1.5 for outliers, 3.0 for extreme outliers)
-        
-        Returns:
-            Dictionary with outlier information
-        """
         if not data or len(data) < 4:
             return {
                 'outliers': [],
@@ -321,96 +311,6 @@ class TimeSeriesGrouper:
             return sorted_groups
         
         return groups_list
-
-
-# Pseudo-code and Complexity Analysis Documentation
-"""
-ALGORITHM 1: QUICKSORT
-======================
-Pseudo-code:
-    function quicksort(arr, low, high):
-        if low < high:
-            pivot_index = partition(arr, low, high)
-            quicksort(arr, low, pivot_index - 1)
-            quicksort(arr, pivot_index + 1, high)
-    
-    function partition(arr, low, high):
-        pivot = arr[high]
-        i = low - 1
-        for j from low to high - 1:
-            if arr[j] < pivot:
-                i = i + 1
-                swap arr[i] with arr[j]
-        swap arr[i + 1] with arr[high]
-        return i + 1
-
-Time Complexity:
-    - Best/Average Case: O(n log n)
-        * Partition divides array in half each time
-        * log n levels of recursion, n work per level
-    - Worst Case: O(n²)
-        * Occurs when pivot is always smallest/largest element
-        * n levels of recursion, O(n) work per level
-    
-Space Complexity: O(log n)
-    - Recursion stack depth in balanced case
-    - O(n) in worst case (unbalanced recursion)
-
-
-ALGORITHM 2: ROUTE FREQUENCY COUNTER
-=====================================
-Pseudo-code:
-    function add_route(pickup, dropoff):
-        route_key = create_key(pickup, dropoff)
-        if route_key in frequency_map:
-            frequency_map[route_key] += 1
-        else:
-            frequency_map[route_key] = 1
-    
-    function get_top_routes(n):
-        result = []
-        for i from 0 to n:
-            max_route = find_max(frequency_map)
-            result.append(max_route)
-            remove max_route from frequency_map
-        return result
-
-Time Complexity:
-    - add_route: O(1) average (hash table insert)
-    - get_top_routes: O(n * m) where n is top count, m is unique routes
-    
-Space Complexity: O(u)
-    - Where u is number of unique routes
-    - Hash table stores one entry per unique route
-
-
-ALGORITHM 3: OUTLIER DETECTION (IQR)
-=====================================
-Pseudo-code:
-    function detect_outliers(data, multiplier):
-        sorted_data = sort(data)
-        q1 = calculate_quartile(sorted_data, 0.25)
-        q3 = calculate_quartile(sorted_data, 0.75)
-        iqr = q3 - q1
-        lower_bound = q1 - (multiplier * iqr)
-        upper_bound = q3 + (multiplier * iqr)
-        
-        outliers = []
-        for value in data:
-            if value < lower_bound or value > upper_bound:
-                outliers.append(value)
-        return outliers
-
-Time Complexity:
-    - O(n log n) for sorting
-    - O(n) for finding outliers
-    - Overall: O(n log n)
-    
-Space Complexity: O(n)
-    - Stores sorted copy of data
-    - Stores outlier list
-"""
-
 
 # Test functions to verify implementations
 if __name__ == "__main__":

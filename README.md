@@ -25,8 +25,8 @@ This application processes raw NYC taxi trip records, stores them in a MySQL dat
 **Clone Repository**
 
 ```bash
-git clone https://github.com/SHYAKA-Aime/Urban_Mobility-Data-Explorer.git
-cd Urban_Mobility-Data-Explorer
+git clone https://github.com/SHYAKA-Aime/KK_team-Urban_Mobility-Data-Explorer.git
+cd KK_team-Urban_Mobility-Data-Explorer
 ```
 
 ### 1. Setup MySQL Database
@@ -234,6 +234,6 @@ Contents:
 ## Team Members
 
 Aime SHYAKA [SHYAKA-Aime] - Database design, API development
-Golbert Gautier Kamanzi [kamanzi2025]- data processing, algorithms
-Jotham Rutijana Jabo [Rutijana] - Frontend development, visualizations
-Rwema Christian Gashumba [Rwema707] - Backend Logic development
+Golbert Gautier Kamanzi [kamanzi2025]- Frontend HTML
+Jotham Rutijana Jabo [Rutijana] - UI design and styling
+Rwema Christian Gashumba [Rwema707] - Elements Functionalities and Javascript

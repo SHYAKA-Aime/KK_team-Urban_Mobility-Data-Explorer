@@ -60,13 +60,7 @@ class DataProcessor:
         print("Database connection closed")
     
     def haversine_distance(self, lon1, lat1, lon2, lat2):
-        """
-        Calculate distance between two coordinates using Haversine formula
-        Returns distance in miles
-        
-        Time Complexity: O(1) - constant time calculation
-        Space Complexity: O(1) - only uses fixed variables
-        """
+      
         R = 3959  # Earth's radius in miles
         
         # Convert to radians
@@ -82,10 +76,7 @@ class DataProcessor:
         return R * c
     
     def validate_record(self, row):
-        """
-        Validate a single record and return issues
-        Returns: (is_valid, issues_list)
-        """
+      
         issues = []
         
         # Check for missing values
@@ -211,14 +202,7 @@ class DataProcessor:
             return 'night'
     
     def compute_derived_features(self, row, trip_distance):
-        """
-        Compute three main derived features plus additional categorical features
-        
-        DERIVED FEATURES (as per assignment requirements):
-        1. trip_distance_miles: Distance in miles using Haversine formula
-        2. avg_speed_mph: Average speed = distance / time
-        3. trip_efficiency: Distance per minute (measures productive movement)
-        """
+   
         pickup_dt = datetime.strptime(row['pickup_datetime'], '%Y-%m-%d %H:%M:%S')
         duration_seconds = int(row['trip_duration'])
         duration_hours = duration_seconds / 3600
@@ -275,9 +259,9 @@ class DataProcessor:
     
     def process_and_load_data(self):
         """Main function to process CSV and load into database"""
-        print("\n" + "="*60)
-        print("NYC TAXI DATA PROCESSING PIPELINE")
-        print("="*60 + "\n")
+        print("\n")
+        print("DATA PROCESSING PIPELINE")
+        print("\n")
         
         print("Reading data from:", DATA_FILE_PATH)
         
@@ -472,9 +456,8 @@ class DataProcessor:
     
     def print_summary(self):
         """Print processing summary"""
-        print("\n" + "="*60)
+        print("\n")
         print("PROCESSING SUMMARY")
-        print("="*60)
         print(f"Total records processed:    {self.stats['total']:,}")
         print(f"Valid records inserted:     {self.stats['valid']:,}")
         print(f"Invalid records excluded:   {self.stats['invalid']:,}")
@@ -484,7 +467,7 @@ class DataProcessor:
             success_rate = (self.stats['valid']/self.stats['total']*100)
             print(f"Success rate:               {success_rate:.2f}%")
         
-        print("="*60 + "\n")
+        print("\n")
         
         # Issue breakdown
         if self.issues_log:

@@ -586,9 +586,7 @@ def run_server():
     """Start the HTTP server"""
     try:
         with socketserver.TCPServer((SERVER_HOST, SERVER_PORT), TaxiAPIHandler) as httpd:
-            print("="*60)
-            print("NYC TAXI DATA EXPLORER - Backend Server")
-            print("="*60)
+            print("Backend Server")
             print(f"Server running on http://{SERVER_HOST}:{SERVER_PORT}")
             print(f"Frontend: http://{SERVER_HOST}:{SERVER_PORT}")
             print(f"API Base: http://{SERVER_HOST}:{SERVER_PORT}/api")
@@ -600,7 +598,7 @@ def run_server():
             print("  GET  /api/top-routes     - Most frequent routes")
             print("  GET  /api/outliers       - Outlier detection")
             print("\nPress Ctrl+C to stop the server")
-            print("="*60 + "\n")
+            print("\n")
             
             httpd.serve_forever()
             

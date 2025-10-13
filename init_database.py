@@ -41,9 +41,7 @@ def read_sql_file(filename):
 
 def main():
     """Main initialization function"""
-    print("="*60)
     print("NYC TAXI DATABASE INITIALIZATION")
-    print("="*60)
     print()
     
     # Connect to MySQL
@@ -109,9 +107,7 @@ def main():
     # Commit changess
     conn.commit()
     print()
-    print("="*60)
     print("DATABASE INITIALIZATION COMPLETE")
-    print("="*60)
     print()
     
     # Show created tables
