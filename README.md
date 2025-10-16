@@ -221,7 +221,7 @@ curl "http://localhost:8000/api/top-routes?limit=10"
 
 ## Video Walkthrough
 
-[Insert your video link here]
+https://youtu.be/ImcdapVb7-o
 
 Contents:
 
